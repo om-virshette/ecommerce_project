@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 p-4">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Pay for {{ product.name }}</h2>
+{% if shipping_data %}
+    <div class="alert alert-info text-start">
+        <h5>Shipping Details:</h5>
+        <p><strong>Name:</strong> {{ shipping_data.full_name }}</p>
+        <p><strong>Address:</strong> {{ shipping_data.address }}</p>
+        <p><strong>City:</strong> {{ shipping_data.city }}</p>
+        <p><strong>State:</strong> {{ shipping_data.state }}</p>
+        <p><strong>Pin Code:</strong> {{ shipping_data.pin_code }}</p>
+        <p><strong>Contact:</strong> {{ shipping_data.contact_number }}</p>
+    </div>
+{% else %}
+    <div class="alert alert-warning">Shipping details not available.</div>
+{% endif %}
+
+    <p class="text-center">Amount: <strong>₹{{ amount }}</strong></p>
+
+
+            <form action="{% url 'payment_success' %}" method="POST">
+                {% csrf_token %}
+                <!-- Hidden inputs for Razorpay POST verification -->
+                <input type="hidden" name="order_id" value="{{ order_id }}">
+                <input type="hidden" name="amount" value="{{ amount }}">
+                
+                <!-- Razorpay Payment Button -->
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ razorpay_key }}"
+                    data-amount="{{ amount|floatformat:0|stringformat:'d' }}00"
+                    data-currency="INR"
+                    data-order_id="{{ order_id }}"
+                    data-buttontext="Pay Now"
+                    data-name="ElectroCart"
+                    data-description="Secure Payment"
+                    data-image="https://example.com/logo.png"
+                    data-theme.color="#0d6efd"
+                ></script>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

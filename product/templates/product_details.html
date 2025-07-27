@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Product Details
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ product.name }}</h2>
+                <p class="text-muted">Price: ₹{{ product.price }}</p>
+                <p>{{ product.description }}</p>
+
+                <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
+                    <form method="GET" action="{% url 'start_payment' %}">
+                     <button type="submit" class="btn btn-warning">Buy Now</button>
+                    </form>
+                </form>
+
+                <hr class="my-4">
+                <p class="text-muted"><small>Free delivery on orders above ₹500</small></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order History
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 p-4">
+    <h2 class="mb-4">Order History</h2>
+
+    {% if orders %}
+        <div class="list-group">
+            {% for order in orders %}
+                <div class="list-group-item list-group-item-action mb-3 shadow-sm">
+                    <h5>Order #{{ order.id }}</h5>
+                    <p><strong>Status:</strong> {{ order.order_status }}</p>
+                    <p><strong>Amount:</strong> ₹{{ order.total_amount }}</p>
+                    <p><strong>Placed on:</strong> {{ order.created_at|date:"D, d M Y H:i" }}</p>
+                    <a href="{% url 'track_order' order.id %}" class="btn btn-primary btn-sm">Track Order</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            You have not placed any orders yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br>
+<!-- 🔍 Search Bar -->
+<form method="GET" action="{% url 'product_list' %}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search products..." value="{{ query }}">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </div>
+</form>
+
+{% if category %}
+    <h2 class="mb-4">Products in {{ category.name }}</h2>
+{% else %}
+    <h2 class="mb-4">Our Products</h2>
+{% endif %}
+
+<!-- Product Grid -->
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">₹{{ product.price }}</p>
+
+                <div class="d-flex">
+                    <!-- Add to Cart Form -->
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success m-1 p-1">Add to Cart</button>
+                    </form>
+                
+                    <!-- "View Details" Button -->
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary m-1 p-1">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Policy | ElectroCart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .policy-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 20px;
+        }
+        
+        .policy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .policy-header h1 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .policy-header .last-updated {
+            color: var(--dark);
+            font-style: italic;
+        }
+        
+        .policy-section {
+            margin-bottom: 30px;
+        }
+        
+        .policy-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .policy-point {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .policy-icon {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        .policy-note {
+            background-color: var(--light);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        
+        .policy-warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 25px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid white;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .policy-container {
+                padding: 25px 15px;
+            }
+            
+            .policy-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-container">
+        <div class="policy-header">
+            <h1><i class="fas fa-exchange-alt"></i> Return & Refund Policy</h1>
+            <p class="last-updated">Last Updated: July 24, 2025</p>
+        </div>
+        
+        <div class="policy-section">
+            <h2><i class="fas fa-info-circle"></i> Overview</h2>
+            <p>At ElectroCart, we want you to be completely satisfied with your purchase. If you're not satisfied, we're happy to offer returns and refunds within the guidelines below.</p>
+        </div>
+        
+        <div class="policy-section">
+            <h2><i class="fas fa-undo"></i> Return Eligibility</h2>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-check-circle"></i></div>
+                <div>
+                    <strong>14-Day Return Window:</strong> Items must be returned within 14 days of delivery
+                </div>
+            </div>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-check-circle"></i></div>
+                <div>
+                    <strong>Original Condition:</strong> Products must be unused, in original packaging with all tags and accessories
+                </div>
+            </div>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-check-circle"></i></div>
+                <div>
+                    <strong>Proof of Purchase:</strong> Order number or receipt required
+                </div>
+            </div>
+            
+            <div class="policy-note">
+                <i class="fas fa-info-circle"></i> Some products like software, earphones, and personalized items may not be eligible for return due to hygiene or licensing reasons.
+            </div>
+        </div>
+        
+        <div class="policy-section">
+            <h2><i class="fas fa-money-bill-wave"></i> Refund Process</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">1. Return Initiation</div>
+                    <p>Request a return through your account or contact our support team within 14 days</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">2. Return Approval</div>
+                    <p>We'll email you return instructions within 24 business hours</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">3. Ship Your Return</div>
+                    <p>Package the item securely and ship it back to us within 5 days of approval</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">4. Inspection</div>
+                    <p>We inspect returned items (typically within 3 business days of receipt)</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">5. Refund Issued</div>
+                    <p>Refund processed to original payment method within 5-7 business days</p>
+                </div>
+            </div>
+            
+            <div class="policy-warning">
+                <i class="fas fa-exclamation-triangle"></i> Refunds may take 7-10 business days to appear in your account depending on your bank's processing time.
+            </div>
+        </div>
+        
+        <div class="policy-section">
+            <h2><i class="fas fa-truck"></i> Return Shipping</h2>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-rupee-sign"></i></div>
+                <div>
+                    <strong>Free Returns:</strong> We provide prepaid return labels for defective or incorrect items
+                </div>
+            </div>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-rupee-sign"></i></div>
+                <div>
+                    <strong>Customer-Paid Returns:</strong> For change of mind returns, customer bears return shipping costs
+                </div>
+            </div>
+            
+            <div class="policy-point">
+                <div class="policy-icon"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <strong>Recommendation:</strong> Use trackable shipping and retain proof of postage
+                </div>
+            </div>
+        </div>
+        
+        <div class="policy-section">
+            <h2><i class="fas fa-ban"></i> Non-Returnable Items</h2>
+            <ul style="padding-left: 20px; list-style-type: none;">
+                <li><i class="fas fa-times" style="color: var(--danger); margin-right: 10px;"></i> Software, games, and digital downloads</li>
+                <li><i class="fas fa-times" style="color: var(--danger); margin-right: 10px;"></i> Personal care items (earphones, etc.)</li>
+                <li><i class="fas fa-times" style="color: var(--danger); margin-right: 10px;"></i> Customized or personalized products</li>
+                <li><i class="fas fa-times" style="color: var(--danger); margin-right: 10px;"></i> Items damaged by misuse</li>
+            </ul>
+        </div>
+        
+        <div class="contact-cta">
+            <h3 style="margin-top: 0;"><i class="fas fa-headset"></i> Need Help With a Return?</h3>
+            <p>Our customer support team is happy to assist you with any return questions.</p>
+            <a href="/contact" style="display: inline-block; background: white; color: var(--secondary); padding: 12px 25px; border-radius: 30px; text-decoration: none; margin-top: 15px; font-weight: 600;">Contact Support</a>
+        </div>
+    </div>
+</body>
+</html>

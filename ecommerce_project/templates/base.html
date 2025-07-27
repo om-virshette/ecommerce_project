@@ -1,0 +1,329 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroCart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/"> ElectroCart</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'product_list' %}">Home</a></li>
+            {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'product_list' %}">Products</a></li> {% endcomment %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'view_cart' %}">Cart</a></li>
+              <li class="nav-item">
+    <a class="nav-link" href="{% url 'contact:contact' %}">
+        <i class="fas fa-envelope mr-1"></i> Contact Us
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'about:about' %}">
+        <i class="fas fa-info-circle mr-1"></i> About Us
+    </a>
+</li>
+            <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+        Category
+    </a>
+    <div class="dropdown-menu">
+        {% for cat in all_categories %}
+        <a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">{{ cat.name }}</a>
+        {% endfor %}
+    </div>
+</li>
+
+
+
+            <!-- Check if the user is authenticated -->
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>  <!-- Bootstrap Profile Icon -->
+                        {{ user.username }}  <!-- Display Logged-in User's Name -->
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-light ml-2" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+<br><br>
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Footer Columns -->
+        <div class="footer-grid">
+            <!-- About Column -->
+            <div class="footer-column">
+                <h3 class="footer-heading">ElectroCart</h3>
+                <p class="footer-text">Your one-stop shop for the latest electronics and gadgets at competitive prices.</p>
+                <div class="social-links">
+                    <a href="https://github.com/om052003" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/om_virshette/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/om-virshette" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+
+            <!-- Customer Service Column -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'shipping_policy' %}">Shipping Policy</a></li>
+                    <li><a href="{% url 'return_policy' %}">Return Policy</a></li>
+                    <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'terms_of_service' %}">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p class="footer-text">Subscribe to get updates on new products and special offers!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="copyright-section">
+            <p>&copy; 2025 ElectroCart. All Rights Reserved.</p>
+            <p class="mb-0">Developed by <a href="https://github.com/om052003" target="_blank" class="text-black">Om Virshette</a></p></center><br>
+            <div class="footer-badges">
+                <div class="col-md-6 text-md-end">
+                <div class="footer-badges">
+                <span class="badge">Secure Payments</span>
+                <span class="badge">Free Shipping</span>
+                <span class="badge">24/7 Support</span>
+            </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        color: #333;
+        padding: 40px 0 20px;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+
+    .footer-heading {
+        color: #2c3e50;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-heading::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background: #3498db;
+    }
+
+    .footer-text {
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: #555;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #3498db;
+        padding-left: 5px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        color: #555;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        background: #3498db;
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .newsletter-form {
+        display: flex;
+        margin-top: 15px;
+    }
+
+    .newsletter-form input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .newsletter-form button {
+        padding: 0 15px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .newsletter-form button:hover {
+        background: #2980b9;
+    }
+
+    .payment-methods {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        color: #555;
+    }
+
+    .copyright-section {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        margin-top: 30px;
+    }
+
+    .copyright-section p {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+    }
+
+    .footer-badges {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .badge {
+        background: #3498db;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .footer-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .newsletter-form {
+            flex-direction: column;
+        }
+        
+        .newsletter-form input,
+        .newsletter-form button {
+            width: 100%;
+            border-radius: 4px;
+        }
+        
+        .newsletter-form button {
+            margin-top: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

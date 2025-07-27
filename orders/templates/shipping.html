@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Shipping Information</h2>
+
+    <form method="POST" id="shipping-form">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {{ form.full_name.label_tag }}
+            {{ form.full_name }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.contact_number.label_tag }}
+            {{ form.contact_number }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.address.label_tag }}
+            {{ form.address }}
+        </div>
+
+       <div class="mb-3">
+    <label for="id_state">State</label>
+    {{ form.state }}
+</div>
+
+        <div class="mb-3">
+    {{ form.city.label_tag }}
+    {{ form.city }}
+</div>
+
+        <div class="mb-3">
+            {{ form.pin_code.label_tag }}
+            {{ form.pin_code }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,181 @@
+<!-- templates/policies/privacy_policy.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<div class="privacy-container">
+    <div class="privacy-header">
+        <h1><i class="fas fa-lock"></i> Privacy Policy</h1>
+        <p class="text-muted">Last Updated: {% now "F j, Y" %}</p>
+    </div>
+
+    <div class="policy-section">
+        <h2><i class="fas fa-info-circle"></i> Information We Collect</h2>
+        <p>We collect the following types of information when you use ElectroCart:</p>
+        
+        <div class="data-table">
+            <div class="data-row header">
+                <div class="data-cell">Data Type</div>
+                <div class="data-cell">Purpose</div>
+                <div class="data-cell">Legal Basis</div>
+            </div>
+            <div class="data-row">
+                <div class="data-cell">Account Information</div>
+                <div class="data-cell">User authentication, order processing</div>
+                <div class="data-cell">Contractual necessity</div>
+            </div>
+            <div class="data-row">
+                <div class="data-cell">Order Details</div>
+                <div class="data-cell">Fulfillment, customer support</div>
+                <div class="data-cell">Contractual necessity</div>
+            </div>
+            <div class="data-row">
+                <div class="data-cell">Payment Information</div>
+                <div class="data-cell">Transaction processing</div>
+                <div class="data-cell">Legal obligation</div>
+            </div>
+            <div class="data-row">
+                <div class="data-cell">Browsing Data</div>
+                <div class="data-cell">Site improvements, analytics</div>
+                <div class="data-cell">Consent</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2><i class="fas fa-cookie-bite"></i> Cookies & Tracking</h2>
+        <p>We use cookies for:</p>
+        <ul class="policy-list">
+            <li>Session maintenance</li>
+            <li>Shopping cart functionality</li>
+            <li>Google Analytics (opt-out available)</li>
+        </ul>
+        <div class="cookie-consent">
+            <button id="cookie-settings" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-cog"></i> Cookie Preferences
+            </button>
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2><i class="fas fa-shield-alt"></i> Data Protection</h2>
+        <p>We implement:</p>
+        <ul class="policy-list">
+            <li>SSL/TLS encryption</li>
+            <li>Regular security audits</li>
+            <li>PCI-DSS compliance for payments</li>
+        </ul>
+    </div>
+
+    <div class="policy-section">
+        <h2><i class="fas fa-user-cog"></i> Your Rights</h2>
+        <p>Under GDPR and other regulations, you have the right to:</p>
+        <div class="rights-grid">
+            <div class="right-item">
+                <i class="fas fa-download"></i>
+                <span>Access your data</span>
+            </div>
+            <div class="right-item">
+                <i class="fas fa-edit"></i>
+                <span>Request corrections</span>
+            </div>
+            <div class="right-item">
+                <i class="fas fa-trash-alt"></i>
+                <span>Request deletion</span>
+            </div>
+            <div class="right-item">
+                <i class="fas fa-file-export"></i>
+                <span>Data portability</span>
+            </div>
+        </div>
+    </div>
+<br>
+    <div class="contact-section">
+        <h3><i class="fas fa-headset"></i> Contact Our DPO</h3>
+        <p>For privacy concerns:</p>
+        <p><i class="fas fa-envelope"></i> dpo@electrocart.com</p>
+        <p><i class="fas fa-phone"></i> +91 XXXX XXX XXX</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .privacy-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .privacy-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+    }
+    .data-table {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 1.5rem 0;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .data-row {
+        display: contents;
+    }
+    .data-row.header .data-cell {
+        font-weight: 600;
+        background: #f8f9fa;
+    }
+    .data-cell {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+    }
+    .rights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    .right-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 4px;
+    }
+    @media (max-width: 768px) {
+        .data-table {
+            grid-template-columns: 1fr;
+        }
+        .data-row.header {
+            display: none;
+        }
+        .data-cell {
+            padding: 8px;
+        }
+        .data-cell:before {
+            content: attr(data-label);
+            font-weight: 600;
+            display: inline-block;
+            width: 120px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Cookie preferences modal trigger
+    document.getElementById('cookie-settings').addEventListener('click', function() {
+        // Implement your cookie preference modal here
+        alert('Cookie preference center would open here');
+    });
+});
+</script>
+{% endblock %}

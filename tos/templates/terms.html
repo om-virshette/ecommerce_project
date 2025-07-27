@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    /* Terms of Service Specific CSS */
+    .tos-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    .tos-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+    .tos-header h1 {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    .last-updated {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+    .tos-section {
+        margin-bottom: 2.5rem;
+    }
+    .tos-section h2 {
+        color: #3498db;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px dashed #ddd;
+    }
+    .tos-content {
+        line-height: 1.8;
+        color: #555;
+    }
+    .tos-content p {
+        margin-bottom: 1rem;
+    }
+    .tos-content ul, .tos-content ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+    }
+    .tos-contact {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 5px;
+        margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tos-container {
+            padding: 0 0.5rem;
+        }
+        .tos-section h2 {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+<br>
+<div class="tos-container">
+    <div class="tos-header">  
+    
+        <h1>Terms of Service</h1>
+        <p class="last-updated">Last Updated: {% now "F j, Y" %}</p>
+    </div>
+
+    <div class="tos-section">
+        <h2>1. Acceptance of Terms</h2>
+        <div class="tos-content">
+            <p>By accessing and using ElectroCart ("the Service"), you accept and agree to be bound by the terms and provisions of this agreement.</p>
+            <p>If you do not agree to abide by these terms, please do not use this Service.</p>
+        </div>
+    </div>
+
+    <div class="tos-section">
+        <h2>2. User Responsibilities</h2>
+        <div class="tos-content">
+            <p>As a user of this Service, you agree to:</p>
+            <ul>
+                <li>Provide accurate and complete registration information</li>
+                <li>Maintain the confidentiality of your account credentials</li>
+                <li>Not use the Service for any illegal or unauthorized purpose</li>
+                <li>Not attempt to gain unauthorized access to any part of the Service</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tos-section">
+        <h2>3. Intellectual Property</h2>
+        <div class="tos-content">
+            <p>All content included on this site, such as text, graphics, logos, and images, is the property of ElectroCart or its content suppliers and protected by international copyright laws.</p>
+        </div>
+    </div>
+
+    <div class="tos-section">
+        <h2>4. Limitation of Liability</h2>
+        <div class="tos-content">
+            <p>ElectroCart shall not be liable for any direct, indirect, incidental, special or consequential damages resulting from:</p>
+            <ol>
+                <li>The use or inability to use the Service</li>
+                <li>Unauthorized access to or alteration of your transmissions or data</li>
+                <li>Any other matter relating to the Service</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="tos-contact">
+        <h3>Contact Information</h3>
+        <p>If you have any questions about these Terms, please contact us at:</p>
+        <p><strong>Email:</strong> legal@electrocart.com</p>
+        <p><strong>Address:</strong> Pune, Maharashtra </p>
+    </div>
+</div>
+{% endblock %}

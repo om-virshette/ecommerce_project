@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Modern About Page Styles */
+    .about-hero {
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+        padding: 5rem 0;
+        margin-bottom: 3rem;
+    }
+    .stat-card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.3s;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #6e8efb;
+    }
+    .team-card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+    .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .team-img {
+        width: 100%;
+        height: 300px; /* Fixed height for images */
+        object-fit: cover; /* Ensures image fills container */
+        object-position: top; /* Focus on faces */
+        border-radius: 8px 8px 0 0;
+    }
+    .timeline {
+        border-left: 3px solid #6e8efb;
+        position: relative;
+        padding-left: 2rem;
+    }
+    .timeline-item {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    .timeline-item:before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        background: #a777e3;
+        border-radius: 50%;
+        position: absolute;
+        left: -2.4rem;
+        top: 5px;
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Our Story</h1>
+        <p class="lead">Building the future of e-commerce, one pixel at a time</p>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<div class="container mb-5">
+    <div class="row">
+        {% for stat in stats %}
+        <div class="col-md-3 mb-4">
+            <div class="stat-card">
+                <div class="stat-value">{{ stat.value }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Team Section -->
+<section class="container mb-5">
+    <h2 class="text-center mb-5">Meet Our Team</h2>
+    <div class="row">
+        {% for member in team %}
+        <div class="col-md-6 mb-4">
+            <div class="team-card card">
+                {% comment %} <img src="{% static 'Photo1.jpg' %}" class="team-img card-img-top" alt="{{ member.name }}" height="250px" width="100px"> {% endcomment %}
+                <div class="card-body">
+                    <h3>{{ member.name }}</h3>
+                    <h5 class="text-primary">{{ member.role }}</h5>
+                    <p>{{ member.bio }}</p>
+                    <div class="social-links">
+                    <a href="https://github.com/om052003" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/om_virshette/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="www.linkedin.com/in/om-virshette" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+    <section class="mission-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Our Mission</h2>
+                    <p class="mission-statement">
+                        To revolutionize e-commerce by providing cutting-edge electronics with 
+                        unparalleled customer service and lightning-fast delivery.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="values-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Core Values</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>Constantly pushing boundaries in e-commerce technology</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Integrity</h3>
+                        <p>Honest business practices you can trust</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Customer Focus</h3>
+                        <p>Your satisfaction is our top priority</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+      
+      
+</section>
+
+{% endblock %}

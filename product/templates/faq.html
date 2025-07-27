@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | ElectroCart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-gray: #f8f9fa;
+            --dark-gray: #7f8c8d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .faq-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 20px;
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 15px auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: var(--light-gray);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .contact-promo {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h1><i class="fas fa-question-circle"></i> Frequently Asked Questions</h1>
+        
+        <!-- Shipping FAQs -->
+        <h2 style="color: var(--primary-color); margin: 30px 0 20px;"><i class="fas fa-truck"></i> Shipping Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">How long does delivery take?</div>
+            <div class="faq-answer">
+                <p>Standard delivery takes 3-5 business days after processing. Express shipping delivers in 2-3 business days. Processing time is typically 1-2 business days.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Do you offer India shipping?</div>
+            <div class="faq-answer">
+                <p>Currently, we only ship within Maharashtra. We plan to expand in Other states in the future.</p>
+            </div>
+        </div>
+        
+        <!-- Payments FAQs -->
+        <h2 style="color: var(--primary-color); margin: 30px 0 20px;"><i class="fas fa-credit-card"></i> Payment Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">What payment methods do you accept?</div>
+            <div class="faq-answer">
+                <p>We accept all major credit/debit cards, UPI, Net Banking, and popular wallets like Paytm and PhonePe.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is my payment information secure?</div>
+            <div class="faq-answer">
+                <p>Yes, we use Razorpay's PCI-DSS compliant payment gateway. We never store your full payment details.</p>
+            </div>
+        </div>
+        
+        <!-- Returns FAQs -->
+        <h2 style="color: var(--primary-color); margin: 30px 0 20px;"><i class="fas fa-exchange-alt"></i> Returns & Refunds</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is your return policy?</div>
+            <div class="faq-answer">
+                <p>You may return most items within 15 days of delivery. Items must be unused with original packaging. See our <a href="/return-policy" style="color: var(--primary-color);">Return Policy</a> for details.</p>
+            </div>
+        </div>
+        
+        <!-- Product FAQs -->
+        <h2 style="color: var(--primary-color); margin: 30px 0 20px;"><i class="fas fa-box-open"></i> Product Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Are your products genuine/original?</div>
+            <div class="faq-answer">
+                <p>Yes, we only sell 100% authentic products from authorized suppliers and manufacturers.</p>
+            </div>
+        </div>
+        
+        <div class="contact-promo">
+            <h3 style="margin-top: 0;"><i class="fas fa-headset"></i> Still have questions?</h3>
+            <p>Our customer support team is available 24/7 to assist you.</p>
+            <a href="/contact" style="display: inline-block; background: white; color: var(--secondary-color); padding: 10px 20px; border-radius: 30px; text-decoration: none; margin-top: 15px; font-weight: 600;">Contact Us</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

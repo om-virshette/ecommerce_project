@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Checkout</h2>
+
+    <div class="text-center">
+        <h4>Total Amount: ₹{{ amount }}</h4>
+        <p>Click the button below to complete your payment.</p>
+
+        <form action="{% url 'payment_success' %}" method="POST">
+            {% csrf_token %}
+            <script
+                src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="{{ razorpay_key }}"
+                data-amount="{{ amount|floatformat:0|stringformat:'d' }}00"
+                data-currency="INR"
+                data-order_id="{{ order_id }}"
+                data-buttontext="Pay with Razorpay"
+                data-name="ElectroCart"
+                data-description="Secure payment"
+                data-theme.color="#28a745">
+            </script>
+        </form>
+    </div>
+</div>
+{% endblock %}

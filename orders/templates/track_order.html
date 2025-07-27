@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 p-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Track Your Order</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Order ID:</strong> {{ order.id }}</p>
+                    <p><strong>Status:</strong> 
+                        <span class="badge 
+                            {% if order.order_status == "Pending" %} bg-warning 
+                            {% elif order.order_status == "Confirmed" %} bg-info 
+                            {% elif order.order_status == "Shipped" %} bg-primary 
+                            {% elif order.order_status == "Delivered" %} bg-success 
+                            {% else %} bg-secondary {% endif %}">
+                            {{ order.order_status }}
+                        </span>
+                    </p>
+                    <p><strong>Order Total:</strong> ₹{{ order.total_amount }}</p>
+                    <p><strong>Placed on:</strong> {{ order.created_at|date:"D, d M Y H:i" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Shipping Details</h4>
+                    <p><strong>Name:</strong> {{ order.shipping_name }}</p>
+                    <p><strong>Address:</strong> {{ order.shipping_address }}</p>
+                    <p><strong>City:</strong> {{ order.city }}</p>
+                    <p><strong>State:</strong> {{ order.state }}</p>
+                    <p><strong>PIN Code:</strong> {{ order.pin_code }}</p>
+                    <p><strong>Contact:</strong> {{ order.contact_number }}</p>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Order Items:</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.items.all %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>₹{{ item.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.total_price }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr class="table-active">
+                            <td colspan="3" class="text-end"><strong>Grand Total:</strong></td>
+                            <td><strong>₹{{ order.total_amount }}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 alert 
+                {% if order.order_status == "Pending" %} alert-warning 
+                {% elif order.order_status == "Confirmed" %} alert-info 
+                {% elif order.order_status == "Shipped" %} alert-primary 
+                {% elif order.order_status == "Delivered" %} alert-success 
+                {% else %} alert-secondary {% endif %}">
+                {% if order.order_status == "Pending" %}
+                    <p><i class="fas fa-clock"></i> Your order is pending. It will be processed soon.</p>
+                {% elif order.order_status == "Confirmed" %}
+                    <p><i class="fas fa-check-circle"></i> Your order has been confirmed and is being packed.</p>
+                {% elif order.order_status == "Shipped" %}
+                    <p><i class="fas fa-truck"></i> Your order has been shipped and is on its way.</p>
+                    {% if order.tracking_number %}
+                    <p class="mt-2">Tracking Number: {{ order.tracking_number }}</p>
+                    {% endif %}
+                {% elif order.order_status == "Delivered" %}
+                    <p><i class="fas fa-box-open"></i> Your order has been delivered. Thank you for shopping with us!</p>
+                {% else %}
+                    <p><i class="fas fa-times-circle"></i> The order status is unknown.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
